@@ -27,10 +27,3 @@ public class _328OddEvenLinkedList {
 		return head;
 	}
 }
-
-
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) { val = x; }
-}
