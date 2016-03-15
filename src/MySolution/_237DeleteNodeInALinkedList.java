@@ -1,3 +1,5 @@
+package MySolution;
+
 /**
  * leetcode的测试例子不足，
  * node.val = node.next.val;
