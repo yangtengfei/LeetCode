@@ -13,7 +13,7 @@ public class _242ValidAnagram {
 		char v2[] = map(t);
 		return Arrays.equals(v1, v2);
 	}
-
+	
 	private char[] map(String s) {
 		char[] map = new char[128];
 		for(int i=0; i < s.length(); i++){
