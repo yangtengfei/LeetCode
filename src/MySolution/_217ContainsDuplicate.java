@@ -1,8 +1,16 @@
+package MySolution;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Given an array of integers, find if the array contains any duplicates. 
+ * Your function should return true if any value appears at least twice in the array, 
+ * and it should return false if every element is distinct.
+ * @author yangtf
+ *
+ */
 public class _217ContainsDuplicate {
-	// My solution
+	// My solution ==> 用set会更好
 	public boolean containsDuplicase(int[] nums) {
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 		for (int i = 0; i < nums.length; i++) {
