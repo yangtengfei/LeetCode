@@ -1,3 +1,4 @@
+package MySolution;
 /**
  * @author: tengfei yang
  * @email: yangtengfei666666@163.com
