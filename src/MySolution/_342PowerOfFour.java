@@ -1,3 +1,4 @@
+package MySolution;
 /**
  * @author: tengfei yang
  * @email: yangtengfei666666@163.com
@@ -6,7 +7,7 @@
  */
 public class _342PowerOfFour {
 	public boolean isPowerOfFour(int num) {
-        for (int i = -1; i < 15; i++) {
+        for (int i = 0; i < 15; i++) {
 			if (num == (1 << ((i+1) * 2))) return true;
 		}
         return false;
