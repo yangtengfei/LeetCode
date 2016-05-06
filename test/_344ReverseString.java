@@ -7,15 +7,22 @@
  */
 public class _344ReverseString {
 	public static void main(String[] args) {
-		String string = "";
+		String string = "asdasf123";
 		System.out.println(reverseString(string));
 	}
 	public static String reverseString(String s) {
-		char[] c = s.toCharArray();
+		/*char[] c = s.toCharArray();
 		String str = "";
 		for(int i = c.length-1; i >= 0; i --){
 			str += c[i];
 		}
-		return str;
+		return str;*/
+		char[] c = s.toCharArray();
+        for (int i=0,j=c.length-1;i<j;i++,j--){
+            char temp = c[i];
+            c[i]=c[j];
+            c[j]=temp;
+        }
+        return new String(c);
 	}
 }
