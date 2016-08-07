@@ -17,7 +17,7 @@ public class _350IntersectionOfTwoArraysII {
         List<Integer> temp = new ArrayList<Integer>();
         for(int i = 0, j = 0; i < nums1.length && j < nums2.length;){
         	if (nums1[i] < nums2[j]) i++;
-        	else if (nums2[i] < nums1[j]) j++;
+        	else if (nums1[i] > nums2[j]) j++;
         	else {
 				temp.add(nums1[i]);
 				i++;j++;
