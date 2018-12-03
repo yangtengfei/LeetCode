@@ -1,4 +1,4 @@
-
+package MySolution;
 public class _28ImplementStrstr {
 
 	public static void main(String[] args) {
