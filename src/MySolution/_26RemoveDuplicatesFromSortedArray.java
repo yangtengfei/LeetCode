@@ -1,4 +1,7 @@
 package MySolution;
+
+import java.util.Arrays;
+
 /**
  * @author: tengfei yang
  * @email: yangtengfei666666@163.com
@@ -7,8 +10,9 @@ package MySolution;
  */
 public class _26RemoveDuplicatesFromSortedArray {	
 	public static void main(String[] args) {
-		int[] nums = {1,1,2};
+		int[] nums = {0,0,1,1,1,2,2,3,3,4};
 		System.out.println(removeDuplicates(nums));
+		System.out.println(Arrays.toString(nums));
 	}
 	public static int removeDuplicates(int[] nums) {
 		if (2 > nums.length) return nums.length;
@@ -21,4 +25,5 @@ public class _26RemoveDuplicatesFromSortedArray {
 		}
 		return len;
     }
+	
 }
