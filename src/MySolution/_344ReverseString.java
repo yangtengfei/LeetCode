@@ -19,4 +19,19 @@ public class _344ReverseString {
 		}
 		return str.toString();
 	}
+	
+	// 最新的对撞指针，刚好能看到成长
+    public static String reverseString2(String s) {
+    	if (s == null || s.length() == 0) {
+			return s;
+		}
+    	char[] charS = s.toCharArray();
+    	int i = 0, j = charS.length - 1;
+    	while (i < j) { // [i,j]
+			char temp = charS[i];
+			charS[i++] = charS[j];
+			charS[j--] = temp;
+		}
+    	return String.valueOf(charS);
+    }
 }
