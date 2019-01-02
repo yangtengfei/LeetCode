@@ -17,7 +17,7 @@ public class _17LetterCombinationsofAPhoneNumber {
 	
 	public static void main(String[] args) {
 		String nums = "23";
-		System.out.println(letterCombinations2(nums).toString());
+		System.out.println(letterCombinations3(nums).toString());
 	}
     public static List<String> letterCombinations(String digits) {
         List<String> list = new ArrayList<String>();
@@ -64,7 +64,7 @@ public class _17LetterCombinationsofAPhoneNumber {
         combination(digits, "", 0, ans);
         return ans;
     }
-    private static void combination(String digits, String prefix, int offset ,List<String> ans) {
+    private static void combination(String digits, String prefix, int offset ,List<String> ans) { // perfix表示字符串前缀
         int digit = digits.charAt(offset) - '0'; // 字符转化为数字
         String KEY = KEYS[digit];
         if(offset == digits.length() - 1) {
@@ -81,4 +81,29 @@ public class _17LetterCombinationsofAPhoneNumber {
             combination(digits, sb.toString(), offset + 1, ans);
         }    
     }
+    
+    // 模仿别人的方法
+	public static List<String> letterCombinations3(String digits) {
+        if(digits == null || digits.length() == 0) return new ArrayList<>();
+        List<String> ans = new ArrayList<>();
+        combinations3(digits, ans, "", 0);
+        return ans;
+    }
+	private static void combinations3(String digits, List<String> ans, String perfix, int point) {
+		int num = digits.charAt(point) - '0'; // 不知道字符串的这种.charAt用法
+		String Key = KEYS[num];
+		if (point == digits.length() - 1) {
+			for (int i = 0; i < Key.length(); i++) {
+				StringBuilder sBuilder = new StringBuilder(perfix); // 用StringBuilder增加效率
+				sBuilder.append(Key.charAt(i));
+				ans.add(sBuilder.toString());
+			}
+			return;
+		}
+		for (int i = 0; i < Key.length(); i++) {
+			StringBuilder sBuilder = new StringBuilder(perfix);
+			sBuilder.append(Key.charAt(i));
+			combinations3(digits, ans, sBuilder.toString(), point + 1); // 如果是++point则point自增，point+1传递的是+1后的参数
+		}
+	}
 }
