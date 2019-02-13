@@ -26,7 +26,7 @@ public class _612KclosestPoints {
      */
     public Point[] kClosest(Point[] points, Point origin, int k) {
         if(points.length <= k) return points;
-        PriorityQueue<Point> queue = new PriorityQueue<>(k, new Comparator<Point>(){
+        PriorityQueue<Point> queue = new PriorityQueue<>(k, new Comparator<Point>(){ // 优先队列是小根堆
             public int compare(Point a, Point b){
                 int tempA = (a.x - origin.x)*(a.x - origin.x) + (a.y - origin.y)*(a.y - origin.y);
                 int tempB = (b.x - origin.x)*(b.x - origin.x) + (b.y - origin.y)*(b.y - origin.y);
