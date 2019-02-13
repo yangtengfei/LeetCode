@@ -14,6 +14,8 @@
 // 需要携带的数据有节点、平均值，平均值不好存储，所以存储sum和size，且需要额外数据结构
 // 需要找所有子树，因此需要递归
 // 递归时，先找到叶子节点的值，然后向上计算
+// 设置全局变量，用于保存最大节点
+// 注意递归中返回的值应为当前子树计算的结果值。
 public class _597SubtreeWithMaximumAverage {
     /**
      * @param root: the root of binary tree
