@@ -1,54 +1,63 @@
 // Given a binary tree, find the subtree with maximum average. Return the root of the subtree.
-// 参考链接：https://yeqiuquan.blogspot.com/2017/03/lintcode-597-subtree-with-maximum.html
+
 /**
- * Definition for a binary tree node.
+ * Definition of TreeNode:
  * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
+ *     public int val;
+ *     public TreeNode left, right;
+ *     public TreeNode(int val) {
+ *         this.val = val;
+ *         this.left = this.right = null;
+ *     }
  * }
  */
-
-
+// 需要携带的数据有节点、平均值，平均值不好存储，所以存储sum和size，且需要额外数据结构
+// 需要找所有子树，因此需要递归
+// 递归时，先找到叶子节点的值，然后向上计算
 public class _597SubtreeWithMaximumAverage {
-	// 定义数据结构，方便处理数据
+    /**
+     * @param root: the root of binary tree
+     * @return: the root of the maximum average of subtree
+     */
+	 // 数据结构
 	class ResultType{
 		TreeNode node;
-		int sum, size;
+		int sum,size;
 		public ResultType(TreeNode node, int sum, int size){
 			this.node = node;
 			this.sum = sum;
 			this.size = size;
 		}
-	}
+	} 
 	
-	// 定义初始数据，方便比较
-	private static ResultType result = null;
+	private ResultType result = null; // 去掉static
 	
-	// 寻找目标子树
-	public TreeNode findSubtree(TreeNode root){
-		if(root == null) return null;
-		
-		ResultType resultType = finder(root);
-		
-		return resultType.node;
-	}
+    public TreeNode findSubtree2(TreeNode root) {
+       if(root == null){
+		   return root;
+	   }
+	   
+	   finder(root);
+	   
+	   return result.node;
+    }
 	
-	// 递归实现，比较的地方把分母移到对面
-	private ResultType finder(TreeNode node){
-		// 判空
-		if(node == null) return new ResultType(node , 0, 0);
+	private ResultType finder(TreeNode root){
+		if(root == null){
+			return new ResultType(root, 0, 0);
+		}
 		
-		// 递归
-		ResultType leftType = finder(node.left);
-		ResultType rightType = finder(node.right);
+		ResultType leftType = finder(root.left);
+		ResultType rightType = finder(root.right);
 		
-		// 计算当前值
-		ResultType curResult = new ResultType(node, leftType.sum + rightType.sum + node.val, leftType.size + rightType.size + 1);
-		if(result == null || result.sum * curResult.size < result.size * curResult.sum) result = curResult;
+		ResultType curResult = new ResultType(root, 
+			leftType.sum + rightType.sum + root.val, 
+			leftType.size + rightType.size + 1);
+			
+		if(result == null || curResult.sum * result.size > result.sum * curResult.size){
+			result = curResult;
+		}
 		
-		// 返回
-		return result;
+		return curResult; // 注意这里，返回的应该是当前的结果，用于递归。最大的结果由全局变量result存储
 	}
 }
