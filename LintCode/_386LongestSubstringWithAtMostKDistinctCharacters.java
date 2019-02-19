@@ -1,8 +1,11 @@
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 // Given a string S, 
 // find the length of the longest substring T that contains at most k distinct characters.
+
+// ** 两个版本 len=k or 没有这个要求 **
 
 // 自己还是能想出思路并大致码出代码的
 // 目前的问题是 边界问题处理的不好，还有就是没有考虑清楚maxLen的增加和map大小判断的位置。
@@ -16,6 +19,27 @@ public class _386LongestSubstringWithAtMostKDistinctCharacters {
 	}
 	
 	public static int lengthOfLongestSubstringKDistinct(String s, int k) {
+/*		int n = s.length();
+		if (n <= k) {
+			return n;
+		}
+		int left = 0, right = 0;
+		HashMap<Character, Integer> hashMap = new HashMap<Character, Integer>();
+		
+		int maxLen = k;
+		while (right < n) {
+			if (hashMap.size() <= k) {
+				hashMap.put(s.charAt(right), right++);
+			}
+			if (hashMap.size() > k) {
+				int index = Collections.min(hashMap.values());
+				hashMap.remove(s.charAt(index));
+				left = index + 1;
+			}
+			maxLen = Math.max(maxLen, right - left);
+		}
+		return maxLen;*/
+		
 		// check
 		if (s == null || s.length() == 0 || k == 0) {
 			return 0;
